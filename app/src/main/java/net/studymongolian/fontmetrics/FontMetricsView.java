@@ -14,8 +14,8 @@ import android.widget.Toast;
 public class FontMetricsView extends View {
 
     public final static int DEFAULT_FONT_SIZE_PX = 200;
-    private static final int PURPLE = Color.parseColor("#9315db");
-    private static final int ORANGE = Color.parseColor("#ff8a00");
+    //private static final int PURPLE = Color.parseColor("#9315db");
+    //private static final int ORANGE = Color.parseColor("#ff8a00");
     private static final float STROKE_WIDTH = 5.0f;
 
     private String mText;

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTextStringEditText = (EditText) findViewById(R.id.etTextString);
         mFontSizeEditText = (EditText) findViewById(R.id.etFontSize);
 
-        mTextStringEditText.setText("\uD83D\uDE42a图图");
+        mTextStringEditText.setText("My text line");
         mFontSizeEditText.setText("200");
 
 
