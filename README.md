@@ -13,6 +13,5 @@ I decided to put the project on GitHub to make it easier to experiment with, and
 ## TODO
 
 If you want to help, here are some improvements that are needed:
-- Hide the keyboard after clicking the update button.
 - Improve the layout to work on different sized devices. I'm guessing it may clip some views for small devices or in landscape orientation.
 - Add a few custom (free) fonts and add an option to select different fonts.
