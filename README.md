@@ -13,4 +13,6 @@ I decided to put the project on GitHub to make it easier to experiment with, and
 ## TODO
 
 If you want to help, here are some improvements that are needed:
+- Color code the checkbox items and the lines in the custom view
+- Keyboard popping up when first entering app isn't necessary
 - Add a few custom (free) fonts and add an option to select different fonts.
