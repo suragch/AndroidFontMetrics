@@ -19,191 +19,214 @@
         android:layout_height="150dp"
         android:background="@android:color/white"/>
 
-    <EditText
-        android:id="@+id/etTextString"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/viewWindow"
-        android:layout_marginBottom="20dp"
-        android:hint="My text line"/>
-
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_toRightOf="@id/etTextString"
-        android:text="Update text"
-        android:layout_below="@id/viewWindow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/etFontSize"
-        android:hint="17"
-        android:layout_toRightOf="@id/updateButton"
-        android:inputType="number"
-        android:layout_below="@id/viewWindow"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/viewWindow">
 
-    <CheckBox
-        android:id="@+id/cbTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="Top"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@id/etTextString"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvTop"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbTop"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/cbAscent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Ascent"
-        android:layout_below="@id/cbTop"/>
+                <EditText
+                    android:id="@+id/etTextString"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="My text line"/>
 
-    <TextView
-        android:id="@+id/tvAscent"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbAscent"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/updateButton"
+                    android:text="Update text"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"/>
 
-    <CheckBox
-        android:id="@+id/cbBaseline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Baseline"
-        android:layout_below="@id/cbAscent"/>
+                <EditText
+                    android:id="@+id/etFontSize"
+                    android:hint="17"
+                    android:inputType="number"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvBaseline"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbBaseline"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <CheckBox
-        android:id="@+id/cbDescent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Descent"
-        android:layout_below="@id/cbBaseline"/>
 
-    <TextView
-        android:id="@+id/tvDescent"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbDescent"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cbTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Top"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@id/contentLayout"/>
 
-    <CheckBox
-        android:id="@+id/cbBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Bottom"
-        android:layout_below="@id/cbDescent"/>
+            <TextView
+                android:id="@+id/tvTop"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbTop"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvBottom"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbBottom"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cbAscent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Ascent"
+                android:layout_below="@id/cbTop"/>
 
-    <CheckBox
-        android:id="@+id/cbWidth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Measured width"
-        android:layout_below="@id/cbBottom"/>
+            <TextView
+                android:id="@+id/tvAscent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbAscent"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvWidth"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbWidth"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cbBaseline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Baseline"
+                android:layout_below="@id/cbAscent"/>
 
-    <CheckBox
-        android:id="@+id/cbTextBounds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:checked="true"
-        android:text="Text bounds"
-        android:layout_below="@id/cbWidth"/>
+            <TextView
+                android:id="@+id/tvBaseline"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbBaseline"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvTextBounds"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/cbTextBounds"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cbDescent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Descent"
+                android:layout_below="@id/cbBaseline"/>
 
-    <TextView
-        android:id="@+id/tvLeadingLabel"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Leading"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/white"
-        android:layout_below="@id/cbTextBounds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvDescent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbDescent"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvLeadingValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toRightOf="@id/cbTop"
-        android:layout_alignBaseline="@id/tvLeadingLabel"
-        android:layout_marginLeft="110dp"
-        android:textColor="@android:color/darker_gray"
-        android:text="10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cbBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Bottom"
+                android:layout_below="@id/cbDescent"/>
+
+            <TextView
+                android:id="@+id/tvBottom"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbBottom"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbWidth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Measured width"
+                android:layout_below="@id/cbBottom"/>
+
+            <TextView
+                android:id="@+id/tvWidth"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbWidth"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbTextBounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:checked="true"
+                android:text="Text bounds"
+                android:layout_below="@id/cbWidth"/>
+
+            <TextView
+                android:id="@+id/tvTextBounds"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/cbTextBounds"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvLeadingLabel"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Leading"
+                android:layout_marginLeft="33dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/cbTextBounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvLeadingValue"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_toRightOf="@id/cbTop"
+                android:layout_alignBaseline="@id/tvLeadingLabel"
+                android:layout_marginLeft="110dp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
 
 </RelativeLayout>
