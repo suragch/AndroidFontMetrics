@@ -1,15 +1,13 @@
 package net.studymongolian.fontmetrics;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
-import android.text.TextPaint;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -92,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 myFontMetricsView.setTextSizeInPixels(fontSize);
                 updateTextViews();
+                hideKeyboard(getCurrentFocus());
                 break;
             case R.id.cbTop:
                 myFontMetricsView.setTopVisible(cbTop.isChecked());
@@ -129,5 +128,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 "     h = " + String.valueOf(myFontMetricsView.getTextBounds().height())));
         tvMeasuredWidth.setText(String.valueOf(myFontMetricsView.getMeasuredTextWidth()));
         tvLeading.setText(String.valueOf(myFontMetricsView.getFontMetrics().leading));
+    }
+
+    private void hideKeyboard(View view) {
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }
