@@ -7,5 +7,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="Theme.AppCompat.CheckBoxAscent">
+        <item name="colorControlActivated">@color/ascent</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.CheckboxTop">
+        <item name="colorControlActivated">@color/top</item>
+    </style>
+    <style name="Theme.AppCompat.CheckboxBaseline">
+        <item name="colorControlActivated">@color/baseline</item>
+    </style>
+    <style name="Theme.AppCompat.CheckboxDescent">
+        <item name="colorControlActivated">@color/descent</item>
+    </style>
+    <style name="Theme.AppCompat.CheckboxBottom">
+        <item name="colorControlActivated">@color/bottom</item>
+    </style>
+    <style name="Theme.AppCompat.MeasuerdWidth">
+        <item name="colorControlActivated">@color/measured_width</item>
+    </style>
+    <style name="Theme.AppCompat.TextBounds">
+        <item name="colorControlActivated">@color/text_bounds</item>
+    </style>
 
 </resources>

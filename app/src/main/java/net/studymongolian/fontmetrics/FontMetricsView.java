@@ -20,6 +20,13 @@ public class FontMetricsView extends View {
 
     private String mText;
     private int mTextSize;
+    private Paint mAscentPaint;
+    private Paint mTopPaint;
+    private Paint mBaselinePaint;
+    private Paint mDescentPaint;
+    private Paint mBottomPaint;
+    private Paint mMeasuredWidthPaint;
+    private Paint mTextBoundsPaint;
     private TextPaint mTextPaint;
     private Paint mLinePaint;
     private Paint mRectPaint;
@@ -33,7 +40,7 @@ public class FontMetricsView extends View {
     private boolean mIsWidthVisible;
 
 
-    public FontMetricsView (Context context) {
+    public FontMetricsView(Context context) {
         super(context);
         init();
     }
@@ -56,10 +63,40 @@ public class FontMetricsView extends View {
         mLinePaint.setColor(Color.RED);
         mLinePaint.setStrokeWidth(STROKE_WIDTH);
 
+        mAscentPaint = new Paint();
+        mAscentPaint.setColor(getResources().getColor(R.color.ascent));
+        mAscentPaint.setStrokeWidth(STROKE_WIDTH);
+
+        mTopPaint = new Paint();
+        mTopPaint.setColor(getResources().getColor(R.color.top));
+        mTopPaint.setStrokeWidth(STROKE_WIDTH);
+
+        mBaselinePaint = new Paint();
+        mBaselinePaint.setColor(getResources().getColor(R.color.baseline));
+        mBaselinePaint.setStrokeWidth(STROKE_WIDTH);
+
+        mBottomPaint = new Paint();
+        mBottomPaint.setColor(getResources().getColor(R.color.bottom));
+        mBottomPaint.setStrokeWidth(STROKE_WIDTH);
+
+        mDescentPaint = new Paint();
+        mDescentPaint.setColor(getResources().getColor(R.color.descent));
+        mDescentPaint.setStrokeWidth(STROKE_WIDTH);
+
+        mMeasuredWidthPaint = new Paint();
+        mMeasuredWidthPaint.setColor(getResources().getColor(R.color.measured_width));
+        mMeasuredWidthPaint.setStrokeWidth(STROKE_WIDTH);
+
+        mTextBoundsPaint = new Paint();
+        mTextBoundsPaint.setColor(getResources().getColor(R.color.text_bounds));
+        mTextBoundsPaint.setStrokeWidth(STROKE_WIDTH);
+        mTextBoundsPaint.setStyle(Paint.Style.STROKE);
+
         mRectPaint = new Paint();
         mRectPaint.setColor(Color.BLACK);
         mRectPaint.setStrokeWidth(STROKE_WIDTH);
         mRectPaint.setStyle(Paint.Style.STROKE);
+
 
         mBounds = new Rect();
 
@@ -77,7 +114,7 @@ public class FontMetricsView extends View {
         super.onDraw(canvas);
 
         // center the text baseline vertically
-        int verticalAdjustment = this.getHeight()/2;
+        int verticalAdjustment = this.getHeight() / 2;
         canvas.translate(0, verticalAdjustment);
 
         float startX = getPaddingLeft();
@@ -94,31 +131,27 @@ public class FontMetricsView extends View {
         if (mIsTopVisible) {
             startY = mTextPaint.getFontMetrics().top;
             stopY = startY;
-            mLinePaint.setColor(Color.RED);
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mTopPaint);
         }
 
         if (mIsAscentVisible) {
             startY = mTextPaint.getFontMetrics().ascent;
             stopY = startY;
             //mLinePaint.setColor(Color.GREEN);
-            mLinePaint.setColor(Color.RED);
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mAscentPaint);
         }
 
         if (mIsBaselineVisible) {
             startY = 0;
             stopY = startY;
-            mLinePaint.setColor(Color.RED);
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mBaselinePaint);
         }
 
         if (mIsDescentVisible) {
             startY = mTextPaint.getFontMetrics().descent;
             stopY = startY;
             //mLinePaint.setColor(Color.BLUE);
-            mLinePaint.setColor(Color.RED);
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mDescentPaint);
         }
 
         if (mIsBottomVisible) {
@@ -126,20 +159,18 @@ public class FontMetricsView extends View {
             stopY = startY;
             // mLinePaint.setColor(ORANGE);
             mLinePaint.setColor(Color.RED);
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mBaselinePaint);
         }
 
         if (mIsBoundsVisible) {
 
             mTextPaint.getTextBounds(mText, 0, mText.length(), mBounds);
-            mRectPaint.setColor(Color.RED);
             float dx = getPaddingLeft();
-            canvas.drawRect(mBounds.left + dx, mBounds.top, mBounds.right + dx, mBounds.bottom, mRectPaint);
+            canvas.drawRect(mBounds.left + dx, mBounds.top, mBounds.right + dx, mBounds.bottom, mTextBoundsPaint);
         }
 
         if (mIsWidthVisible) {
 
-            mLinePaint.setColor(Color.BLACK);
 
             // get measured width
             float width = mTextPaint.measureText(mText);
@@ -148,16 +179,16 @@ public class FontMetricsView extends View {
             mTextPaint.getTextBounds(mText, 0, mText.length(), mBounds);
 
             // draw vertical line just before the left bounds
-            startX = getPaddingLeft() + mBounds.left - (width - mBounds.width())/2;
+            startX = getPaddingLeft() + mBounds.left - (width - mBounds.width()) / 2;
             stopX = startX;
             startY = -verticalAdjustment;
             stopY = startY + this.getHeight();
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mMeasuredWidthPaint);
 
             // draw vertical line just after the right bounds
             startX = startX + width;
             stopX = startX;
-            canvas.drawLine(startX, startY, stopX, stopY, mLinePaint);
+            canvas.drawLine(startX, startY, stopX, stopY, mMeasuredWidthPaint);
         }
     }
 
@@ -190,12 +221,14 @@ public class FontMetricsView extends View {
     public Paint.FontMetrics getFontMetrics() {
         return mTextPaint.getFontMetrics();
     }
+
     public Rect getTextBounds() {
         mTextPaint.getTextBounds(mText, 0, mText.length(), mBounds);
-        return  mBounds;
+        return mBounds;
     }
+
     public float getMeasuredTextWidth() {
-        return  mTextPaint.measureText(mText);
+        return mTextPaint.measureText(mText);
     }
 
     // setters
@@ -204,36 +237,44 @@ public class FontMetricsView extends View {
         invalidate();
         requestLayout();
     }
+
     public void setTextSizeInPixels(int pixels) {
         mTextSize = pixels;
         mTextPaint.setTextSize(mTextSize);
         invalidate();
         requestLayout();
     }
+
     public void setTopVisible(boolean isVisible) {
         mIsTopVisible = isVisible;
         invalidate();
     }
+
     public void setAscentVisible(boolean isVisible) {
         mIsAscentVisible = isVisible;
         invalidate();
     }
+
     public void setBaselineVisible(boolean isVisible) {
         mIsBaselineVisible = isVisible;
         invalidate();
     }
+
     public void setDescentVisible(boolean isVisible) {
         mIsDescentVisible = isVisible;
         invalidate();
     }
+
     public void setBottomVisible(boolean isVisible) {
         mIsBottomVisible = isVisible;
         invalidate();
     }
+
     public void setBoundsVisible(boolean isVisible) {
         mIsBoundsVisible = isVisible;
         invalidate();
     }
+
     public void setWidthVisible(boolean isVisible) {
         mIsWidthVisible = isVisible;
         invalidate();
