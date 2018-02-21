@@ -148,7 +148,7 @@ public class FontMetricsView extends View {
             mTextPaint.getTextBounds(mText, 0, mText.length(), mBounds);
 
             // draw vertical line just before the left bounds
-            startX = getPaddingLeft() + mBounds.left - (width - mBounds.width())/2;
+            startX = getPaddingLeft();
             stopX = startX;
             startY = -verticalAdjustment;
             stopY = startY + this.getHeight();
