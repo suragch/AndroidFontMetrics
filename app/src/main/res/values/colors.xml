@@ -3,4 +3,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Font Metrics-->
+    <color name="ascent">#21ff12</color>
+
+
+    <color name="top">#ff1b01</color>
+    <color name="baseline">#ac1230</color>
+    <color name="descent">#04f</color>
+    <color name="bottom">#78129f</color>
+    <color name="measured_width">#bc12ff</color>
+    <color name="text_bounds">#b17290</color>
+
+
 </resources>
